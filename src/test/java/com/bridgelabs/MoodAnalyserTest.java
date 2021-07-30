@@ -18,20 +18,20 @@ public class MoodAnalyserTest {
      */
     @Test
     public void testMoodAnalysis_whenMoodIsSad() {
-        MoodAnalyser moodAnalyzer = new MoodAnalyser();
-        String mood = moodAnalyzer.analyseMood("This is a sad message");
+        MoodAnalyser moodAnalyser = new MoodAnalyser("This is a sad message");
+        String mood = moodAnalyser.analyseMood();
         Assert.assertThat(mood, CoreMatchers.is("SAD"));
     }
 
     /**
      * Purpose : analyse mood
-     * Input message: Im in any mood.
+     * Input message: Iam in any mood.
      * @return : HAPPY
      */
     @Test
     public void testMoodAnalysis_whenMoodIsHappy() {
-        MoodAnalyser moodAnalyzer = new MoodAnalyser();
-        String mood = moodAnalyzer.analyseMood("Im in any mood");
+        MoodAnalyser moodAnalyser = new MoodAnalyser("Im in any mood");
+        String mood = moodAnalyser.analyseMood();
         Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
     }
 
