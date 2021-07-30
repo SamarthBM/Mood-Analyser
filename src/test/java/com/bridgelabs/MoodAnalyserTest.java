@@ -19,8 +19,13 @@ public class MoodAnalyserTest {
     @Test
     public void testMoodAnalysis_whenMoodIsSad() {
         MoodAnalyser moodAnalyser = new MoodAnalyser("This is a sad message");
-        String mood = moodAnalyser.analyseMood();
-        Assert.assertThat(mood, CoreMatchers.is("SAD"));
+        String mood = null;
+        try {
+            mood = moodAnalyser.analyseMood();
+            Assert.assertEquals("SAD" , mood);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -30,22 +35,46 @@ public class MoodAnalyserTest {
      */
     @Test
     public void testMoodAnalysis_whenMoodIsHappy() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser("Im in any mood");
-        String mood = moodAnalyser.analyseMood();
-        Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+        MoodAnalyser moodAnalyser = new MoodAnalyser("Iam in any mood");
+        String mood = null;
+        try {
+            mood = moodAnalyser.analyseMood();
+            Assert.assertEquals("HAPPY" , mood);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * Purpose : Handle Exception if User Provides Invalid Mood
+     * Purpose : Custom Exception if User Provides Invalid Mood
      * Input message: null
-     * @return : HAPPY
+     * @return : custom exception message is null
      */
 
     @Test
-    public void testMoodAnalysis_whenMoodIsNull() {
+    public void testMoodAnalysis_whenMoodIsNull_ShouldThrowException() {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
-        String mood = moodAnalyser.analyseMood();
-        Assert.assertEquals("HAPPY" , mood);
+        try {
+            moodAnalyser.analyseMood();
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_NULL, e.type);
+        }
+    }
+
+    /**
+     * Purpose : Custom Exception if User Provides Invalid Mood
+     * Input message: empty
+     * @return : custom exception message is empty
+     */
+
+    @Test
+    public void testMoodAnalysis_whenMoodIsEmpty_ShouldThrowException() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser("");
+        try {
+            moodAnalyser.analyseMood();
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_EMPTY , e.type);
+        }
     }
 
 }
