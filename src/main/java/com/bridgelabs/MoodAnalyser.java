@@ -1,5 +1,5 @@
 /**
- * Purpose : Refactored to perform mood analyser by declaring the message in constructor.
+ * Purpose : To use null point exception in mood analyser program.
  *
  * @author: Samarth BM
  */
