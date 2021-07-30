@@ -1,13 +1,40 @@
-//package com.bridgelabs;
-//
-//import org.junit.Assert;
-//import org.junit.Test;
-//
-//public class MoodAnalyserTest {
-//    @Test
-//    public void testMoodAnalysis() {
-//        MoodAnalyser moodAnalyser = new MoodAnalyser();
-//        String mood = moodAnalyser.analyseMood("This is a happy message");
-//        Assert.assertEquals(mood, "HAPPY");
-//    }
-//}
+/**
+ * Purpose : To perform mood analyser test cases.
+ *
+ * @author: Samarth BM
+ */
+package com.bridgelabs;
+
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
+import org.junit.Test;
+
+public class MoodAnalyserTest {
+
+    /**
+     * Purpose : analyse mood
+     * Input message : This is a sad message.
+     * @return : SAD
+     */
+    @Test
+    public void testMoodAnalysis_whenMoodIsSad() {
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        String mood = moodAnalyzer.analyseMood("This is a sad message");
+        Assert.assertThat(mood, CoreMatchers.is("SAD"));
+    }
+
+    /**
+     * Purpose : analyse mood
+     * Input message: Im in any mood.
+     * @return : HAPPY
+     */
+    @Test
+    public void testMoodAnalysis_whenMoodIsHappy() {
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        String mood = moodAnalyzer.analyseMood("Im in any mood");
+        Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
+    }
+
+}
+
+
