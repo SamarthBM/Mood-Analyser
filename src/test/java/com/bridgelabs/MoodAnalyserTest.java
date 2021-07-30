@@ -35,6 +35,19 @@ public class MoodAnalyserTest {
         Assert.assertThat(mood, CoreMatchers.is("HAPPY"));
     }
 
+    /**
+     * Purpose : Handle Exception if User Provides Invalid Mood
+     * Input message: null
+     * @return : HAPPY
+     */
+
+    @Test
+    public void testMoodAnalysis_whenMoodIsNull() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        String mood = moodAnalyser.analyseMood();
+        Assert.assertEquals("HAPPY" , mood);
+    }
+
 }
 
 

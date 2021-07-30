@@ -20,14 +20,18 @@ public class MoodAnalyser {
 
     /**
      * Purpose : Given a message, ability to analyse and respond HAPPY or SAD mood.
+     * Condition: Handle NULLPOINTER Exception using try-catch block.
      *
      * @return : HAPPY or SAD
      */
     public String analyseMood() {
-        if (message.contains("sad"))
-            return "SAD";
-        else
+        try {
+            if (message.contains("sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        } catch (Exception e) {
             return "HAPPY";
+        }
     }
-
 }
